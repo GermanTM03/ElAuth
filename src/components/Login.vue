@@ -14,7 +14,6 @@
         <p>¡Inicio de sesión exitoso!</p>
       </div>
   
-      <!-- Condición para mostrar el componente Vistas.vue -->
       <div v-if="showVistas">
         <Vistas />
       </div>
@@ -33,11 +32,49 @@
   const login = () => {
     if (email.value === 'German@gmail.com' && password.value === '1111') {
       loggedIn.value = true;
-      // Redirige al usuario al componente Vistas.vue en la carpeta components
       showVistas.value = true;
     } else {
       alert('Inicio de sesión fallido. Verifica tu correo y contraseña.');
     }
   };
   </script>
+  <style scoped>
+  .login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
   
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input {
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .success-message {
+    margin-top: 20px;
+    color: #4caf50;
+  }
+  </style>
