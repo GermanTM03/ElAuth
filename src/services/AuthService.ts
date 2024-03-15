@@ -1,11 +1,11 @@
 import type IUser from '@/interfaces/IUser'
 
-const API_URL = 'http://192.168.0.240:3000'
+const API_URL = '//URL'
 
 
 
 export default {
-  async getUsers(): Promise<IUser[]> {
+  async GetUsers(): Promise<IUser[]> {
     try {
       const response = await fetch(`${API_URL}/Users`)
       if (!response.ok) {
@@ -19,7 +19,7 @@ export default {
   },
 
  
-  async getUserByEmail(email: string): Promise<IUser | null> {
+  async GetEmail(email: string): Promise<IUser | null> {
     try {
       const response = await fetch(`${API_URL}/User?email=${email}`)
       if (!response.ok) {
@@ -33,14 +33,14 @@ export default {
   },
 
         
-  async registerUser(name: string, email: string, password: string, grupo: string): Promise<void> {
+  async registerUser(name: string, email: string, password: string, group: string): Promise<void> {
     try {
       const response = await fetch(`${API_URL}/Register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name, email, password, grupo }) 
+        body: JSON.stringify({ name, email, password, group }) 
       })
       if (!response.ok) {
         throw new Error('No se pudo registrar el usuario')
