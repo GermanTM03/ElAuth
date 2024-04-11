@@ -18,7 +18,12 @@ const router = createRouter({
       component: () => import('../views/UserView.vue')
     },
     {
-      path: '/',
+      path: '/Login',
+      name: 'Login',
+      component: () => import('../views/UserLogin.vue')
+    },
+    {
+      path: '/home',
       name: 'home',
       component: HomeView
     },
@@ -30,5 +35,18 @@ const router = createRouter({
     }
   ]
 })
+router.beforeEach(async (to, from, next) => {
+  if (to.path === '/Usuarios') {
+    const tokenFromStorage = localStorage.getItem('token');
+    const IDFromStorage = localStorage.getItem('ID');
+    if (tokenFromStorage && IDFromStorage) {
+      next();
+    } else {
+      next('/login');
+    }
+  } else {
+    next();
+  }
+});
 
 export default router
